@@ -920,6 +920,10 @@ button{
     font-weight: initial;
   }
 
+  .nav__img{
+    right: 253px;
+  }
+
   .home__content{
     padding: 8rem 0 2rem;
     grid-template-columns: repeat(2, 1fr);
