@@ -182,57 +182,54 @@ button{
   font-size: 1.25rem;
   cursor: pointer;
 }
-/* Контейнер для паука с позиционированием сверху */
 .nav__img {
   position: fixed;
-  top: -100px; /* Начальная позиция за пределами экрана сверху */
+  top: -120px;
   right: 40px;
   width: 100px;
   height: auto;
-  animation: spiderDrop 8s ease-in-out infinite;
   z-index: 100;
-  transform-origin: top center; /* Точка вращения сверху по центру */
+  transform-origin: top center;
+  animation: spiderDrop 2s ease-out forwards, spiderSway 4s ease-in-out infinite 3s;
 }
 
-/* Анимация спуска паука */
+/* Анимация первоначального спуска */
 @keyframes spiderDrop {
   0% {
-      top: -100px;
-      transform: rotate(0deg);
+      top: -120px;
       opacity: 0;
   }
   
-  15% {
-      top: 20px;
-      transform: rotate(-10deg);
-      opacity: 1;
-  }
-  
-  30% {
-      top: 40px;
-      transform: rotate(10deg);
-  }
-  
-  45% {
-      top: 30px;
-      transform: rotate(-10deg);
-  }
-  
-  60% {
-      top: 40px;
-      transform: rotate(10deg);
-  }
-  
-  75% {
-      top: 30px;
-      transform: rotate(-10deg);
+  20% {
       opacity: 1;
   }
   
   100% {
-      top: -100px;
-      transform: rotate(0deg);
-      opacity: 0;
+      top: 0px;
+      opacity: 1;
+  }
+}
+
+/* Анимация покачивания после спуска */
+@keyframes spiderSway {
+  0% {
+      transform: rotate(10deg);
+  }
+  
+  25% {
+      transform: rotate(-10deg);
+  }
+  
+  50% {
+      transform: rotate(10deg);
+  }
+  
+  75% {
+      transform: rotate(-10deg);
+  }
+  
+  100% {
+      transform: rotate(10deg);
   }
 }
 @media screen and (max-width: 767px){
@@ -910,7 +907,6 @@ button{
   .nav{
     height: calc(var(--header-height) + 1.5rem);
   }
-  .nav__img,
   .nav__close,
   .nav__toggle{
     display: none;
